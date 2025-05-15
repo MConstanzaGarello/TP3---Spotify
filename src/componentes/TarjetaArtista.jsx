@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import { useFavoritos } from '../contexto/FavoritosContext';
+import DetalleArtista from '../paginas/DetalleArtista';
 
 export default function TarjetaArtista({ artista }) {
   const { favoritos, toggleFavorito } = useFavoritos();
@@ -11,6 +13,7 @@ export default function TarjetaArtista({ artista }) {
       <button onClick={() => toggleFavorito(artista)}>
         {esFavorito ? '💔 Quitar' : '💖 Favorito'}
       </button>
+      <Link to={`/artista/${artista.id}`}>Ver detalle</Link>
     </div>
   );
 }

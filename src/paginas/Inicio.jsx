@@ -6,7 +6,7 @@ import BotonCerrarSesion from '../componentes/BotonCerrarSesion';
 
 export default function Inicio() {
   const [artistas, setArtistas] = useState([]);
-  const token = localStorage.getItem('token'); // TOKEN DE SPOTIFY
+  const token = localStorage.getItem('token'); 
 
   const buscarArtistas = async (texto) => {
     const res = await fetch(`https://api.spotify.com/v1/search?q=${texto}&type=artist`, {
