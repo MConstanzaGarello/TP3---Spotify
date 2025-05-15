@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import ListaCancionesFavoritas from './paginas/ListaCancionesFavoritas';
 import DetalleAlbum from './paginas/DetalleAlbum';
 import Inicio from './paginas/Inicio.jsx';
-import Login from './paginas/login.jsx';
+import Login from './paginas/Login.jsx';
 import DetalleArtista from './paginas/DetalleArtista';
 
 export default function App() {
