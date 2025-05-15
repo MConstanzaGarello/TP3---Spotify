@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.css'; // Para aplicar los estilos
+import './Login.css';
 
-export default function Login() {
+export default function Login({ setToken }) { // ✅ Recibir la función desde App
   const [clientId, setClientId] = useState('');
   const [clientSecret, setClientSecret] = useState('');
   const navigate = useNavigate();
@@ -26,7 +26,8 @@ export default function Login() {
 
       if (data.access_token) {
         localStorage.setItem('token', data.access_token);
-        navigate('/');
+        setToken(data.access_token); // ✅ Actualiza el estado en App.jsx
+        navigate('/'); // ✅ Redirige al inicio
       } else {
         alert('Error al obtener el token');
       }

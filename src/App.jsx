@@ -1,24 +1,26 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
-import ListaCancionesFavoritas from './paginas/ListaCancionesFavoritas';
-import DetalleAlbum from './paginas/DetalleAlbum';
-import Inicio from './paginas/Inicio.jsx';
-import Login from './paginas/Login.jsx';
+import Inicio from './paginas/Inicio';
+import Login from './paginas/Login';
 import DetalleArtista from './paginas/DetalleArtista';
+import DetalleAlbum from './paginas/DetalleAlbum';
+import ListaCancionesFavoritas from './paginas/ListaCancionesFavoritas';
 
 export default function App() {
- 
   const [token, setToken] = useState(null);
 
   useEffect(() => {
     const storedToken = localStorage.getItem('token');
-    setToken(storedToken);
+    if (storedToken) {
+      setToken(storedToken);
+    }
   }, []);
 
   return (
     <Routes>
       <Route path="/login" element={<Login setToken={setToken} />} />
+
       {token ? (
         <>
           <Route path="/" element={<Inicio />} />
@@ -27,10 +29,8 @@ export default function App() {
           <Route path="/favoritos" element={<ListaCancionesFavoritas />} />
         </>
       ) : (
-        <Route path="" element={<Navigate to="/login" replace />} />
+        <Route path="*" element={<Navigate to="/login" replace />} />
       )}
     </Routes>
   );
 }
-
-
