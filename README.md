@@ -1,1 +1,1 @@
-https://tp-3-spotify.vercel.app/login
+tp-3-spotify.vercel.app
